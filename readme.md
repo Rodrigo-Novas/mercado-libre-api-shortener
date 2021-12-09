@@ -1,11 +1,11 @@
 # Challenge mercado libre
 
 ## Home
-![Home](/master/images/Home.gif)
+![Home](/images/Home.gif)
 
 ## Redireccion
 
-![Home](/master/images/Redireccion.gif)
+![Home](/images/Redireccion.gif)
 
 > **_IMPORTANTE!!!:_**  EN EL ARCHIVO Consultas Insomnia.json SE ENCUENTRAN TODAS LAS CONSULTAS EN FORMATO JSON PARA IMPORTAR DIRECTAMENTE EN INSOMNIA Y HACER TODAS LAS CONSULTAS DESDE LA HERRAMIENTA DE PETICIONES
 
