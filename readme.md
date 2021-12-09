@@ -1,11 +1,11 @@
 # Challenge mercado libre
 
 ## Home
-![Home](https://github.com/Rodrigo-Novas/coderhouse-market-barista/tree/master/images/Home.gif)
+![Home](https://github.com/Rodrigo-Novas/mercado-libre-api-shortener/tree/master/images/Home.gif)
 
 ## Redireccion
 
-![Home](https://github.com/Rodrigo-Novas/coderhouse-market-barista/tree/master/images/Redireccion.gif)
+![Home](https://github.com/Rodrigo-Novas/mercado-libre-api-shortener/tree/master/images/Redireccion.gif)
 
 > **_IMPORTANTE!!!:_**  EN EL ARCHIVO Consultas Insomnia.json SE ENCUENTRAN TODAS LAS CONSULTAS EN FORMATO JSON PARA IMPORTAR DIRECTAMENTE EN INSOMNIA Y HACER TODAS LAS CONSULTAS DESDE LA HERRAMIENTA DE PETICIONES
 
