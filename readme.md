@@ -5,7 +5,7 @@
 
 ## Redireccion
 
-![Home](/images/Redireccion.gif)
+![Redireccion](/images/Redireccion.gif)
 
 > **_IMPORTANTE!!!:_**  EN EL ARCHIVO Consultas Insomnia.json SE ENCUENTRAN TODAS LAS CONSULTAS EN FORMATO JSON PARA IMPORTAR DIRECTAMENTE EN INSOMNIA Y HACER TODAS LAS CONSULTAS DESDE LA HERRAMIENTA DE PETICIONES
 
@@ -69,4 +69,4 @@ O se puede correr directamente el script desde cualquier id
 
 El deploy se encuentra en heroku
 
-<http://localhost:5000/api/ML/home>
+<https://shortener-ml.herokuapp.com/api/ML/home>
