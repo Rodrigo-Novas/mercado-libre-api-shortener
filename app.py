@@ -4,19 +4,13 @@ from sqlalchemy_utils import create_database, database_exists
 from routes.route import blue_print
 from flask_jwt_extended import JWTManager
 import datetime
-
+import os
 
 app = Flask(__name__)
 
-# Base de datos
-db_usuario = "root"
-db_password = "rodrigodatabase"
-db_host = "localhost"
-# la base de datos o schema que vamos a colocarle al proyecto
-db_nombre = "db_api_ml"
 
 # connection string
-DB_URL = f"mysql+pymysql://{db_usuario}:{db_password}@{db_host}/{db_nombre}"
+DB_URL = os.getenv("DB_CONN")
 
 app.config['SQLALCHEMY_DATABASE_URI'] = DB_URL
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
