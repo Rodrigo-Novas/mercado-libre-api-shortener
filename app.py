@@ -9,8 +9,10 @@ import os
 app = Flask(__name__)
 
 
+PWD = os.path.abspath(os.curdir)
+DB_NAME = "database.sqlite3"
 # connection string
-DB_URL = os.getenv("DB_CONN")
+DB_URL = f"sqlite:///{PWD}/{DB_NAME}"
 
 app.config['SQLALCHEMY_DATABASE_URI'] = DB_URL
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False

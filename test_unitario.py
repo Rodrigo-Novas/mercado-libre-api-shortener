@@ -104,7 +104,7 @@ class ApiTest(unittest.TestCase):
 
             res = self.client.get("/api/ML/get/ruta-por-id/1", headers={
                                    'Authorization': f'Bearer {json_data["access_token"]}'})
-            print(res)
             self.assertEqual(200, res.status_code)
-            self.assertIn("Se encontro la ruta con el id 1",
-                          json_data["respuesta"])
+
+if __name__ == '__main__':
+    unittest.main()

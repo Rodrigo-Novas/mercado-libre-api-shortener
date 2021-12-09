@@ -2,9 +2,9 @@ from flask import Blueprint, request, jsonify, current_app, redirect
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended.utils import create_access_token
 from werkzeug.exceptions import abort
+from werkzeug.security import generate_password_hash, check_password_hash
 from models.model import Rutas, UsuarioMl, db
 from schemas.schema import ruta_schema, usuarios_schema, rutas_schema
-import bcrypt
 from datetime import datetime
 from utils.util import Utils
 from flask_expects_json import expects_json
@@ -68,8 +68,7 @@ def registrar_usuario():
         else:
             # Encriptamos clave del usuario
             current_app.logger.debug('Encriptamos clave')
-            clave_encriptada = bcrypt.hashpw(
-                clave.encode("utf-8"), bcrypt.gensalt())
+            clave_encriptada = generate_password_hash(str(clave))
             fecha_de_creacion = datetime.today()
             current_app.logger.debug(
                 f'Insertando fecha de creacion {str(fecha_de_creacion)}')
@@ -106,8 +105,7 @@ def iniciar_sesion():
         if not existe_usuario:
             current_app.logger.debug('Usuario no encontrado')
             return jsonify(respuesta="Usuario no encontrado"), 400
-        es_clave_valida = bcrypt.checkpw(clave.encode(
-            "utf-8"), existe_usuario.clave.encode("utf-8"))
+        es_clave_valida = check_password_hash(str(existe_usuario.clave), str(clave))
         if es_clave_valida:
             current_app.logger.debug(f'Clave valida')
             access_token = create_access_token(
@@ -157,26 +155,31 @@ def crear_ruta():
     """
     try:
         url = request.json["url"]
-        hashp1 = Utils(str(url))
-        validate_url = hashp1.validate_url()
-        if validate_url == True:
-            uuid = hashp1.uuid_conversor()
-            ruta = Rutas.query.filter_by(shortUrl=uuid).first()
-            current_app.logger.debug(f'Ruta {str(ruta)}')
-            while ruta != None:
-                current_app.logger.debug(
-                    f'ruta {str(ruta)} encontrada, se vuelve a buscar')
+        existe_ruta = Rutas.query.filter_by(url=url).first()
+        if not existe_ruta:
+            hashp1 = Utils(str(url))
+            validate_url = hashp1.validate_url()
+            if validate_url == True:
                 uuid = hashp1.uuid_conversor()
                 ruta = Rutas.query.filter_by(shortUrl=uuid).first()
-            fecha_de_creacion = datetime.today()
-            nueva_ruta = Rutas(url, uuid, fecha_de_creacion)
-            db.session.add(nueva_ruta)
-            db.session.commit()
-            current_app.logger.debug('Ruta almacenada exitosamente')
-            return jsonify(respuesta="Ruta almacenada exitosamente"), 201
+                current_app.logger.debug(f'Ruta {str(ruta)}')
+                while ruta != None:
+                    current_app.logger.debug(
+                        f'ruta {str(ruta)} encontrada, se vuelve a buscar')
+                    uuid = hashp1.uuid_conversor()
+                    ruta = Rutas.query.filter_by(shortUrl=uuid).first()
+                fecha_de_creacion = datetime.today()
+                nueva_ruta = Rutas(url, uuid, fecha_de_creacion)
+                db.session.add(nueva_ruta)
+                db.session.commit()
+                current_app.logger.debug('Ruta almacenada exitosamente')
+                return jsonify(respuesta="Ruta almacenada exitosamente", rutaCorta=str(uuid)), 201
+            else:
+                current_app.logger.debug(f'La ruta {str(url)} no es valida')
+                return jsonify(respuesta='La ruta no es valida'), 404
         else:
-            current_app.logger.debug(f'La ruta {str(url)} no es valida')
-            return jsonify(respuesta='La ruta no es valida'), 404
+            current_app.logger.debug('La url ya existe')
+            return jsonify(respuesta="La url ya existe"), 500
     except Exception as e:
         current_app.logger.debug(f'Error al añadir ruta {e}')
         abort(500, description=str(e))

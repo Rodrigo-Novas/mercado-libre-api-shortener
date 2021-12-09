@@ -56,9 +56,13 @@ Para ejecutar el testeo unitario se debe ejecutar en el cmd el siguiente comando
 
 `python -m unittest`
 
+O se puede correr directamente el script desde cualquier id
 
-# ¿Como ejecutar el docker-compose? :whale:
 
-Se dejo un Dockerfile y un docker-compose para poder ejecutar la api en cualquier SO.
+# ¿Como ejecutar el dockerfile? :whale:
+
+Se dejo un Dockerfile y un dockerfile para poder ejecutar la api en cualquier SO.
 Se deben ejecutar los siguientes comandos:
-`docker-compose up -d`
+
+`docker build -t nombre_imagen .` (construye una imagen a partir de un Docker file)
+docker run -it nombreimagen . (corre imagen de forma interactiva todo en minuscula, tengo que colocar el punto despues del nombreimagen)
