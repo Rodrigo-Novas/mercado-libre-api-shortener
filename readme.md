@@ -1,5 +1,11 @@
 # Challenge mercado libre
 
+## Home
+![Home](https://github.com/Rodrigo-Novas/coderhouse-market-barista/blob/master/images/Home.gif)
+
+## Redireccion
+
+![Home](https://github.com/Rodrigo-Novas/coderhouse-market-barista/blob/master/images/Redireccion.gif)
 
 > **_IMPORTANTE!!!:_**  EN EL ARCHIVO Consultas Insomnia.json SE ENCUENTRAN TODAS LAS CONSULTAS EN FORMATO JSON PARA IMPORTAR DIRECTAMENTE EN INSOMNIA Y HACER TODAS LAS CONSULTAS DESDE LA HERRAMIENTA DE PETICIONES
 
@@ -59,10 +65,8 @@ Para ejecutar el testeo unitario se debe ejecutar en el cmd el siguiente comando
 O se puede correr directamente el script desde cualquier id
 
 
-# ¿Como ejecutar el dockerfile? :whale:
+## ¿Donde esta el deploy?
 
-Se dejo un Dockerfile y un dockerfile para poder ejecutar la api en cualquier SO.
-Se deben ejecutar los siguientes comandos:
+El deploy se encuentra en heroku
 
-`docker build -t nombre_imagen .` (construye una imagen a partir de un Docker file)
-docker run -it nombreimagen . (corre imagen de forma interactiva todo en minuscula, tengo que colocar el punto despues del nombreimagen)
+<http://localhost:5000/api/ML/home>
