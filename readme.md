@@ -62,7 +62,7 @@ Para ejecutar el testeo unitario se debe ejecutar en el cmd el siguiente comando
 
 `python -m unittest`
 
-O se puede correr directamente el script desde cualquier id
+O se puede correr directamente el script desde cualquier ide
 
 
 ## ¿Donde esta el deploy?
